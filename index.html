@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Advanced Javascript &amp; ES6</title>
+    <title>RDBMS/Redis-NOSQL</title>
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css">
@@ -28,6 +28,195 @@
           <h2>RDBMS/Redis-NOSQL</h2>
           <h5 style="text-transform:none">by Nabarun Banerjee</h5>
           <p>Sr. Software Developer at Kreeti Technologies</p>
+        </section>
+
+        <section>
+          <h4>Data, Databse and Database Management System</h4>
+
+          <h6 align="left" style="font-size:20px">Data</h6>
+          <div style="margin-bottom:15px">
+            <ul style="font-size:20px;">
+              <li>Data is numerical, charecter or other symbols which can be recorded in a form suitable for processing by a company. (e.g names and addresses of students enrolling onto a university course.)</li>
+            </ul>
+          </div>
+
+
+          <h6 align="left" style="font-size:20px">Schema</h6>
+          <div style="margin-bottom:15px">
+            <ul style="font-size:20px;">
+              <li>
+                The schema is structure of data, whereas data as facts. Schema basically indicates the rules which the data must obey. Such rules can be enforced by a database. and the more rules there is the harder it is to enter poor quality data. Example of rules includes (Name is a string, and needs to hold least 12 charecters, DOB is a date, the company forbids people over 100 years old or younger than 18 years old working for them.)
+              </li>
+            </ul>
+          </div>
+
+          <h6 align="left" style="font-size:20px">Database Management System</h6>
+          <div style="margin-bottom:15px">
+            <ul style="font-size:20px">
+              <li>
+                A Database Management System is a collection of  programs that allows users to specify the structure of a database, to create, query and modify the data in database and to controle access to it. (e.g. limit access to the database so that only relevant staff can access details of enrolling students).
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h4>File System vs. DBMS</h4>
+          <ul style="font-size:20px">
+            <li>Kreeti Technologies has 500 GB of data on employees, departments, products, sales, & so on..
+            </li>
+            <li>
+              Data is accessed concurrently by several employees
+            </li>
+            <li>
+              Questions about the data must be answered quickly.
+            </li>
+            <li>
+              Changes made to the data by different users must be applied consistently
+            </li>
+            <li>
+              Access to certain parts of the data be restricted
+            </li>
+            <li>
+              Many drawbacks!!!
+              <ul>
+                <li>500 GB of main memory not available to hold all data. Data must be stored on secondary storage devices.</li>
+                <li>Even if 500 GB of main memory is available, with 32-bit addressing, we cannot refer directly to more than 4GB of data.</li>
+                <li>
+                  Data redundancy and inconsistency
+                  <ul>
+                    <li>Multiple file formats, duplicate of information in different files</li>
+                  </ul>
+                </li>
+                <li>Special program to answer each question a user may ask.</li>
+              </ul>
+            </li>
+            <li>These drawbacks have prompted the development of database systems</li>
+            <li>Database systems offer solutions to all the above problems.</li>
+          </ul>
+        </section>
+        <section>
+          <h4>ACID properties of DBMS</h4>
+          <h6 align="left" style="font-size:20px">Atomicity, Consistency, Isolation, Durability</h6>
+          <ul style="font-size:20px;">
+            <li>
+              Transactions should prosssess several properties, often called the ACID properties; they should be enforced by the concurrency controle and recovery  methods of the DBMS.
+            </li>
+            <ol>
+              <li><strong>Atomicity: </strong>A transaction is an atomic unit of processing; it should either be performed in its entirely  or not performed at all.</li>
+              <li><strong>Consistency preservation: </strong>A transaction should be consistency preserving, meaning that if it is completely executed from begining to end without interference from other transactions, it should take the database from one consistent state to another.</li>
+              <li><strong>Isolation:</strong>A transaction should appear as though it's being executed in isolation from other transactions, even though many transactions are executing concurrently. That is, the execution of a transaction should not be interfered with by any other transactions executing concurrently.</li>
+              <li><strong>Durability or permanency: </strong> The changes applied to the database by a committed transaction must persist in the database. These changes must not be lost because of any failure.</li>
+            </ol>
+          </ul>
+        </section>
+
+        <section>
+          <h6>DDL</h6>
+          <ul style="font-size:20px;">
+            <li>
+              DDL is abbrevation of <strong>Data Defination Language.</strong>It is used to create and modify the structure of database object in database.
+            </li>
+            <li>Examples: CREATE, ALTER, DROP statements</li>
+          </ul>
+          <p align="left" style="padding-top: 20px; font-size: 25px">Create Table</p>
+          <pre><code data-trim data-noescape>
+CREATE TABLE Students
+(Reg_no varchar2(10),
+Name char(30),
+DOB date,
+Address varchar2(50));
+          </code></pre>
+          <p align="left" style="padding-top: 20px; font-size: 25px">Drop Table</p>
+          <pre><code data-trim data-noescape>
+DROP TABLE Students
+          </code></pre>
+        </section>
+
+        <section>
+          <h6>DML</h6>
+          <ul style="font-size:20px;">
+            <li>
+              DML is abbrevation of <strong>Data Manipulation Language.</strong>It is used to retrive, store, modify, delete insert and update data in database.
+            </li>
+            <li>Examples: SELECT, UPDATE, INSERT statements</li>
+          </ul>
+          <p align="left" style="padding-top: 20px; font-size: 25px">Select from Table</p>
+          <pre><code data-trim data-noescape>
+SELECT column_name1, column_name2
+FROM table_name;
+          </code></pre>
+
+          <p align="left" style="padding-top: 20px; font-size: 25px">Update data in Table</p>
+          <pre><code data-trim data-noescape>
+UPDATE table_name
+SET column1=value1,column2=value2,...
+WHERE some_column=some_value</code></pre>
+        </section>
+
+        <section>
+          <h6>DCL</h6>
+          <ul style="font-size:20px;">
+            <li>
+              Data Control Language(DCL) is used to control privilege in Database. To perform any operation in the database, such as for creating tables, sequences or views we need privileges. Privileges are of two types.
+            </li>
+            <ul>
+              <li><strong>System :</strong> creating session, table etc are all types of system privilege.</li>
+              <li><strong>Object :</strong> any command or query to work on tables comes under object privilege.</li>
+            </ul>
+            <li>DCL defines two commands, Grant and Revoke</li>
+            <ul>
+              <li>
+                <strong>Grant :</strong>Gives user access privileges to database.
+                <pre style="font-size:23px;"><code data-trim data-noescape>
+GRANT privilege_name
+ON object_name
+TO {user_name |PUBLIC |role_name}
+[WITH GRANT OPTION];
+                </code></pre>
+              </li>
+              <li>
+                <strong>Revoke :</strong>Take back permissions from user.
+                <pre style="font-size:23px;"><code data-trim data-noescape>
+REVOKE privilege_name
+ON object_name
+FROM {user_name |PUBLIC |role_name}
+                </code></pre>
+              </li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h6>Database Constraints</h6>
+          <ul style="font-size:20px;">
+            Constraints are rules used to limit the type of data that can go into a table, to maintain the accuracy and integrity of the data inside table.
+            <li>
+              <strong>Column level constraints :</strong> limits only column data
+              <ul>
+                <li>
+                  NOT NULL
+                  <pre style="font-size:23px;"><code data-trim data-noescape>
+CREATE table Student(s_id int NOT NULL, Name varchar(60), Age int);
+                  </code></pre>
+                </li>
+                <li>
+                  UNIQUE
+                  <pre style="font-size:23px;"><code data-trim data-noescape>
+CREATE table Student(s_id int NOT NULL UNIQUE, Name varchar(60), Age int);
+                  </code></pre>
+                </li>
+                <li>
+                  FOREIGN KEY
+                  <pre style="font-size:23px;"><code data-trim data-noescape>
+CREATE table Order_Detail(order_id int PRIMARY KEY,
+order_name varchar(60) NOT NULL,
+c_id int FOREIGN KEY REFERENCES Customer_Detail(c_id));
+                  </code></pre>
+                </li>
+              </ul>
+            </li>
+            <li><strong>Table level constraints :</strong> limits whole table data</li>
+          </ul>
         </section>
       </div>
     </div>
